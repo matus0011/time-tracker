@@ -1,4 +1,6 @@
 import { auth } from "@/lib/auth";
+import { getTasksForUser } from "@/lib/tasks";
+import { TaskBoard } from "@/components/dashboard/TaskBoard";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -8,6 +10,8 @@ export default async function Dashboard() {
   if (!session) {
     redirect("/sign-in");
   }
+
+  const initialTasks = await getTasksForUser(session.user.id);
 
   return (
     <div className="relative flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden bg-background">
@@ -61,6 +65,14 @@ export default async function Dashboard() {
               </div>
             </div>
           </div>
+
+          {/* Kanban zadań */}
+          <section className="mt-12">
+            <h2 className="text-xl font-semibold text-foreground mb-4">
+              Zadania
+            </h2>
+            <TaskBoard initialTasks={initialTasks} />
+          </section>
         </div>
       </main>
     </div>
