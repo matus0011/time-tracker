@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden bg-background">
+    <div className="relative flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden bg-background">
       {/* Subtle gradient background */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,var(--chart-1)/15%,transparent)]" />
       <div className="pointer-events-none absolute bottom-0 right-0 h-96 w-96 rounded-full bg-chart-2/5 blur-3xl" />
